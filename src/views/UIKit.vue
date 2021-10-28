@@ -7,15 +7,20 @@
           Button
         </Button>
       </div>
+      <div class="ui-kit__item">
+        <h3>Input</h3>
+        <Input />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Button from '@/components/Controls/Button'
+import Input from '../components/Controls/Input'
 export default {
   name: 'UIKit',
-  components: { Button }
+  components: { Input, Button }
 }
 </script>
 
@@ -27,7 +32,7 @@ export default {
     &__items {
       display: grid;
       gap: 20px;
-      grid-template-columns: repeat(3, max-content);
+      grid-template-columns: max-content 360px;
     }
     &__item {
       display: grid;
