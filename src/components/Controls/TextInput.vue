@@ -1,5 +1,5 @@
 <template>
-  <input type="text" @input="handleInput" :placeholder="placeholder">
+  <input type="text" v-model="value" :placeholder="placeholder">
 </template>
 
 <script>
@@ -9,11 +9,21 @@ export default {
     placeholder: {
       type: String,
       default: 'Placeholder'
+    },
+    modelValue: {
+      type: String,
+      default: ''
     }
   },
-  methods: {
-    handleInput (e) {
-      this.$emit('input', e.target.value)
+  emits: ['update:modelValue'],
+  computed: {
+    value: {
+      get () {
+        return this.modelValue
+      },
+      set (value) {
+        this.$emit('update:modelValue', value)
+      }
     }
   }
 }
@@ -35,6 +45,7 @@ export default {
 
     &:focus {
       border: 2px solid #0880AE;
+      padding: 14px;
     }
   }
 </style>

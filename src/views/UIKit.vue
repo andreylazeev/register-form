@@ -11,16 +11,21 @@
         <h3>Input</h3>
         <Input />
       </div>
+      <div class="ui-kit__item">
+        <h3>Text Field</h3>
+        <TextField label="Email"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Button from '@/components/Controls/Button'
-import Input from '../components/Controls/Input'
+import Input from '../components/Controls/TextInput'
+import TextField from '../components/blocks/TextField'
 export default {
   name: 'UIKit',
-  components: { Input, Button }
+  components: { TextField, Input, Button }
 }
 </script>
 
@@ -32,7 +37,7 @@ export default {
     &__items {
       display: grid;
       gap: 20px;
-      grid-template-columns: max-content 360px;
+      grid-template-columns: max-content 360px 360px;
     }
     &__item {
       display: grid;
