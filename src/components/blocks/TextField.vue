@@ -49,7 +49,7 @@ export default {
   },
   watch: {
     value (newValue) {
-      if (this.validation.every(validation => this.validations[validation].regexp.test(newValue))) {
+      if (this.validation.every(validation => this.testRegex(this.validations[validation].regexp, newValue))) {
         this.isValid = true
         this.message = ''
       } else {
@@ -57,6 +57,11 @@ export default {
         this.message = this.validation.filter(validation => !this.validations[validation].regexp.test(newValue)).map(validation => this.validations[validation].message).join(', ')
       }
       this.$emit('onInput', { valid: this.isValid, value: newValue })
+    }
+  },
+  methods: {
+    testRegex (regexp, str) {
+      return regexp.test(str)
     }
   }
 }
