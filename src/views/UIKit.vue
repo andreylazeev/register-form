@@ -41,6 +41,7 @@ export default {
     }
     &__item {
       display: grid;
+      grid-template-rows: repeat(2, max-content);
       gap: 20px;
     }
   }
