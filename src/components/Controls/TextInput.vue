@@ -38,6 +38,7 @@ export default {
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(44, 39, 56, 0.04);
     border-radius: 6px;
+    max-height: 50px;
 
     &::placeholder {
       color: #7C9CBF;
