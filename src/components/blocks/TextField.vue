@@ -1,17 +1,17 @@
 <template>
   <div class="text-field">
     <Label>{{label}}</Label>
-    <Input v-model="value" />
+    <TextInput v-model="value"/>
     <p class="error">{{message}}</p>
   </div>
 </template>
 
 <script>
-import Input from '../Controls/TextInput'
+import TextInput from '../Controls/TextInput'
 import Label from '../content/Label'
 export default {
   name: 'TextField',
-  components: { Label, Input },
+  components: { Label, TextInput },
   props: {
     label: {
       type: String,
@@ -21,6 +21,10 @@ export default {
       required: true,
       type: Array,
       default: () => (['email'])
+    },
+    name: {
+      type: String,
+      default: ''
     }
   },
   data () {
@@ -40,7 +44,7 @@ export default {
         },
         name: {
           regexp: /^([а-яё-]*|[a-z-]*|\x20)*$/i,
-          message: 'Допустимы только буквы и символ пробела и дефиса'
+          message: 'Введите имя правильно'
         },
         phone: {
           regexp: /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/,
@@ -58,7 +62,7 @@ export default {
         this.isValid = false
         this.message = this.validation.filter(validation => !this.validations[validation].regexp.test(newValue)).map(validation => this.validations[validation].message).join(', ')
       }
-      this.$emit('onInput', { valid: this.isValid, value: newValue })
+      this.$emit('onInput', { valid: this.isValid, value: newValue, name: this.name })
     }
   },
   methods: {
@@ -77,7 +81,8 @@ export default {
     margin-bottom: 22px;
     .error {
       position: absolute;
-      bottom: -22px;
+      bottom: 0;
+      transform: translateY(calc(100% + 6px));
       font-style: normal;
       font-weight: normal;
       font-size: 14px;

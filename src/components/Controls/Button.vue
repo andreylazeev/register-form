@@ -1,5 +1,5 @@
 <template>
-  <button :disabled="disabled">
+  <button :disabled="disabled" @click.prevent="">
     <slot />
   </button>
 </template>
@@ -21,6 +21,7 @@ export default {
     border: 0;
     outline: 0;
     background: #0880AE;
+    width: 100%;
     box-shadow: 0 2px 4px rgba(44, 39, 56, 0.08), 0 4px 8px rgba(44, 39, 56, 0.08);
     border-radius: 6px;
     padding: 18px 65px;
@@ -44,7 +45,7 @@ export default {
 
     &:disabled {
       background: #DBE2EA;
-      color: #2C2738;
+      color: rgba(44, 39, 56, 0.5);
       &:hover {
         box-shadow: 0 2px 4px rgba(44, 39, 56, 0.08), 0 4px 8px rgba(44, 39, 56, 0.08);
       }

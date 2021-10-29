@@ -13,7 +13,16 @@
       </div>
       <div class="ui-kit__item">
         <h3>Text Field</h3>
-        <TextField label="Email"/>
+        <TextField :validation="['email']" label="Email"/>
+      </div>
+      <div class="ui-kit__item">
+        <h3>Dropdown</h3>
+        <Dropdown />
+      </div>
+
+      <div class="ui-kit__item">
+        <h3>Checkbox</h3>
+        <Checkbox v-model="valueCheckbox"/>
       </div>
     </div>
   </div>
@@ -23,9 +32,16 @@
 import Button from '@/components/Controls/Button'
 import Input from '../components/Controls/TextInput'
 import TextField from '../components/blocks/TextField'
+import Dropdown from '../components/blocks/Dropdown'
+import Checkbox from '../components/Controls/Checkbox'
 export default {
   name: 'UIKit',
-  components: { TextField, Input, Button }
+  components: { Checkbox, Dropdown, TextField, Input, Button },
+  data () {
+    return {
+      valueCheckbox: true
+    }
+  }
 }
 </script>
 
@@ -37,7 +53,7 @@ export default {
     &__items {
       display: grid;
       gap: 20px;
-      grid-template-columns: max-content 360px 360px;
+      grid-template-columns: max-content 360px 360px 360px;
     }
     &__item {
       display: grid;
