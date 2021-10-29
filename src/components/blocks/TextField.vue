@@ -52,9 +52,11 @@ export default {
       if (this.validation.every(validation => this.validations[validation].regexp.test(newValue))) {
         this.isValid = true
         this.message = ''
+        this.$emit('onInput', { valid: this.isValid, value: newValue })
       } else {
         this.isValid = false
         this.message = this.validation.filter(validation => !this.validations[validation].regexp.test(newValue)).map(validation => this.validations[validation].message).join(', ')
+        this.$emit('onInput', { valid: this.isValid, value: newValue })
       }
     }
   }
