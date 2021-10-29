@@ -1,6 +1,6 @@
 <template>
   <div class="text-field">
-    <p class="label">{{label}}</p>
+    <Label>{{label}}</Label>
     <Input v-model="value" />
     <p class="error">{{message}}</p>
   </div>
@@ -8,15 +8,17 @@
 
 <script>
 import Input from '../Controls/TextInput'
+import Label from '../content/Label'
 export default {
   name: 'TextField',
-  components: { Input },
+  components: { Label, Input },
   props: {
     label: {
       type: String,
       default: 'Label'
     },
     validation: {
+      required: true,
       type: Array,
       default: () => (['email'])
     }
@@ -73,13 +75,6 @@ export default {
     display: grid;
     grid-row-gap: 8px;
     margin-bottom: 22px;
-    .label {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 21px;
-      color: #756F86;
-    }
     .error {
       position: absolute;
       bottom: -22px;
